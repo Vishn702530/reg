@@ -1,0 +1,154 @@
+<div class="container">
+    <div class="image-section"></div>
+    <div class="form-section">
+        <div class="custom-small-div"></div> <!-- First div -->
+        <div class="custom-large-div">
+            <div class="registration-text">Registration</div> <!-- Top div with "Registration" text -->
+            <div class="details-container">
+                <div class="details-text">Enter your details to get signed in to your account</div>
+                <!-- Bottom left div with "Enter your details" text -->
+                <div class="account-text">Already have an account? Login</div>
+                <!-- Bottom right div with "Already have an account?" text -->
+            </div>
+        </div>
+        <div class="page-switch">
+            <div class="circle" [ngClass]="{ 'completed': isStepOneCompleted }">
+                <p *ngIf="isStepOneCompleted" class="tick-mark">&#10003;</p>
+                <p *ngIf="!isStepOneCompleted" class="circlep1">01</p>
+            </div> <!-- First ball -->
+            <div class="line"></div> <!-- Connecting line -->
+            <div class="circle" [ngClass]="{ 'completed': isFinalStep && !isStepOneCompleted }">
+                <p *ngIf="isFinalStep && !isStepOneCompleted" class="tick-mark">&#10003;</p>
+                <p class="circlep">02</p>
+            </div> <!-- Second ball -->
+            <div class="text-labels">
+                <div class="general-details">General Details</div> <!-- Below first circle -->
+                <div class="contact-details">Contact Details</div> <!-- Below second circle -->
+            </div>
+        </div>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <div class="form-field-section" *ngIf="currentStep === 1">
+                <div class="section-left">
+                    <div class="box">
+                        <label for="companyName">Company Name</label>
+                        <input id="companyName" formControlName="companyName" />
+                    </div>
+                    <div class="box">
+                        <label for="input2">Field 2</label>
+                        <input id="input2" formControlName="input2" />
+                    </div>
+                    <div class="box">
+                        <label for="input3">Field 3</label>
+                        <input id="input3" formControlName="input3" />
+                    </div>
+                    <div class="box">
+                        <label for="input4">Field 4</label>
+                        <input id="input4" formControlName="input4" />
+                    </div>
+                    <div class="box">
+                        <label for="input5">Field 5</label>
+                        <input id="input5" formControlName="input5" />
+                    </div>
+                    <div class="box">
+                        <label for="input6">Field 6</label>
+                        <input id="input6" formControlName="input6" />
+                    </div>
+                </div>
+                <div class="section-right">
+                    <div class="box">
+                        <label for="input7">Field 7</label>
+                        <input id="input7" formControlName="input7" />
+                    </div>
+                    <div class="box">
+                        <label for="input8">Field 8</label>
+                        <input id="input8" formControlName="input8" />
+                    </div>
+                    <div class="box">
+                        <label for="input9">Field 9</label>
+                        <input id="input9" formControlName="input9" />
+                    </div>
+                    <div class="box">
+                        <label for="input10">Field 10</label>
+                        <input id="input10" formControlName="input10" />
+                    </div>
+                    <div class="box">
+                        <label for="input11">Field 11</label>
+                        <input id="input11" formControlName="input11" />
+                    </div>
+                    <div class="box">
+                        <label for="input12">Field 12</label>
+                        <input id="input12" formControlName="input12" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-field-section" *ngIf="currentStep === 2">
+                <div class="section-left">
+                    <div class="box">
+                        <label for="newInput1">New Field 1</label>
+                        <input id="newInput1" formControlName="newInput1" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput2">New Field 2</label>
+                        <input id="newInput2" formControlName="newInput2" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput3">New Field 3</label>
+                        <input id="newInput3" formControlName="newInput3" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput4">New Field 4</label>
+                        <input id="newInput4" formControlName="newInput4" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput10">New Field 10</label>
+                        <input id="newInput10" formControlName="newInput10" />
+                    </div>
+                </div>
+                <div class="section-right">
+                    <div class="box">
+                        <label for="newInput5">New Field 5</label>
+                        <input id="newInput5" formControlName="newInput5" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput6">New Field 6</label>
+                        <input id="newInput6" formControlName="newInput6" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput7">New Field 7</label>
+                        <input id="newInput7" formControlName="newInput7" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput8">New Field 8</label>
+                        <input id="newInput8" formControlName="newInput8" />
+                    </div>
+                    <div class="box">
+                        <label for="newInput9">New Field 9</label>
+                        <input id="newInput9" formControlName="newInput9" />
+                    </div>
+
+                </div>
+            </div>
+            <div class="custom-new-section" *ngIf="currentStep === 2">
+                <div class="terms-container">
+                  <div class="term">
+                    <input type="checkbox" id="term1" (change)="onCheckboxChange(0, $event)">
+                    <label for="term1">I agree to the Terms of Service</label>
+                  </div>
+                  <div class="term">
+                    <input type="checkbox" id="term2" (change)="onCheckboxChange(1, $event)">
+                    <label for="term2">I agree to the Privacy Policy</label>
+                  </div>
+                  <div class="term">
+                    <input type="checkbox" id="term3" (change)="onCheckboxChange(2, $event)">
+                    <label for="term3">I agree to the Code of Conduct</label>
+                  </div>
+                </div>
+              </div>
+              
+              <button class="next-button" type="submit" [disabled]="!canProceed()">
+                {{ isFinalStep ? 'Submit' : 'Next' }}
+              </button>              
+        </form>
+    </div>
+</div>
